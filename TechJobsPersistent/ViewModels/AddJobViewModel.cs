@@ -15,7 +15,6 @@ namespace TechJobsPersistent.ViewModels
 
         public List<SelectListItem> Employers { get; set; }
 
-        //Employer wasn't initially recognized as a namespace problem
         public AddJobViewModel(List<Employer> employers)
         {
             Employers = new List<SelectListItem>();

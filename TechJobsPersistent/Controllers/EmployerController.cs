@@ -35,6 +35,7 @@ namespace TechJobsPersistent.Controllers
         }
 
         [HttpPost]
+        [Route("Employer/Add")]
         public IActionResult ProcessAddEmployerForm(AddEmployerViewModel addEmployerViewModel)
         {
             if (ModelState.IsValid)
@@ -49,7 +50,7 @@ namespace TechJobsPersistent.Controllers
                 context.Employers.Add(newEmployer);
                 context.SaveChanges();
 
-                return Redirect("/Employers");
+                return Redirect("/Home");
             }
 
             return View("Add", addEmployerViewModel);
@@ -58,12 +59,12 @@ namespace TechJobsPersistent.Controllers
         public IActionResult About(int id)
         {
             Employer theEmployer = context.Employers
-               .Include(e => e.Name)
+               //.Include(e => e.Name)
                .Single(e => e.Id == id);
 
-            EmployerDetailViewModel viewModel = new EmployerDetailViewModel(theEmployer);
+            //EmployerDetailViewModel viewModel = new EmployerDetailViewModel(theEmployer);
 
-            return View(viewModel);
+            return View(theEmployer);
         }
     }
 }
